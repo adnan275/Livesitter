@@ -40,7 +40,8 @@ function App() {
       const response = await streamAPI.getStatus();
       if (response.data.isStreaming) {
         setIsStreaming(true);
-        setStreamUrl(`http://localhost:5001${response.data.hlsUrl}`);
+        const backendUrl = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5001';
+        setStreamUrl(`${backendUrl}${response.data.hlsUrl}`);
       }
     } catch (error) {
       console.error('Error checking stream status:', error);
@@ -60,7 +61,8 @@ function App() {
         setLoading(false);
       } else {
         const response = await streamAPI.start(rtspInput);
-        setStreamUrl(`http://localhost:5001${response.data.hlsUrl}`);
+        const backendUrl = import.meta.env.VITE_API_BASE_URL?.replace('/api', '') || 'http://localhost:5001';
+        setStreamUrl(`${backendUrl}${response.data.hlsUrl}`);
         setIsStreaming(true);
         setLoading(false);
       }

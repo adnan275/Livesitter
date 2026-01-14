@@ -224,6 +224,60 @@ You can use any valid RTSP URL from:
 - FFmpeg conversion uses server resources
 - Recommended: 4GB RAM minimum for smooth operation
 
+## 🌐 Deployment
+
+### Environment Variables
+
+**Backend `.env`:**
+```env
+PORT=5001
+MONGO_URI=your_mongodb_connection_string
+```
+
+**Frontend `.env`:**
+```env
+VITE_API_BASE_URL=https://your-backend-url.com/api
+```
+
+### Frontend Deployment (Vercel/Netlify)
+
+1. Build the frontend:
+   ```bash
+   cd frontend
+   npm run build
+   ```
+
+2. Set environment variable in your hosting platform:
+   ```
+   VITE_API_BASE_URL=https://your-backend-url.com/api
+   ```
+
+3. Deploy the `dist` folder
+
+### Backend Deployment (Render/Railway/Heroku)
+
+1. Set environment variables in your hosting platform:
+   ```
+   PORT=5001
+   MONGO_URI=your_mongodb_connection_string
+   ```
+
+2. Deploy the `backend` folder
+
+### Test Video URLs (No FFmpeg Required)
+
+**MP4 Videos:**
+```
+https://www.w3schools.com/html/mov_bbb.mp4
+https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4
+```
+
+**HLS Streams:**
+```
+https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8
+```
+
+
 ## License
 
 This project is created for internship assignment purposes.
